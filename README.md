@@ -1,5 +1,7 @@
 # Warden MCP
 
+[![ToolSDK MCP Registry](https://badges.toolsdk.ai/badge/@toolsdk-remote/warden-mcp)](https://toolsdk-ai.github.io/toolsdk-mcp-registry/#%40toolsdk-remote%2Fwarden-mcp)
+
 **Your AI agent, trading onchain.** Warden MCP connects your AI app to Warden Token Terminal: find tokens, price swaps and trade on Base, BNB Chain, Robinhood Chain and Arc, within limits you set.
 
 - **Warden embedded wallet (recommended):** sign in with email, Google or X. Lets your agent trade hands-free during sessions you start in Agent access.
