@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "warden": {
+      "url": "https://tokens.wardenprotocol.org/mcp"
+    }
+  }
+}
