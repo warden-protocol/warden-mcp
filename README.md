@@ -60,7 +60,8 @@ More in [Example prompts](#example-prompts).
 | Codex | Paste the install message | Start a new session to load tools. |
 | Hermes | Paste the install message | Run `/reload-mcp` or start a new session. |
 | OpenClaw | Paste the install message | Market tools work right away. |
-| Cursor, VS Code | Add as a remote MCP server in settings | Streamable HTTP at `https://tokens.wardenprotocol.org/mcp`. |
+| Cursor | Cursor Marketplace: install the Warden MCP plugin from Customize. Or add a remote MCP server in settings | Streamable HTTP at `https://tokens.wardenprotocol.org/mcp`. Plugin files: `.cursor-plugin/plugin.json` and `mcp.json`. |
+| VS Code | Add as a remote MCP server in settings | Streamable HTTP at `https://tokens.wardenprotocol.org/mcp`. |
 
 ---
 
