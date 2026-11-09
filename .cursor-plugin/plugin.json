@@ -1,0 +1,15 @@
+{
+  "name": "warden-mcp",
+  "description": "Warden MCP lets AI agents find tokens, quote swaps and trade onchain on Base, BNB Chain, Robinhood Chain, Arc and Solana, within limits you set.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Warden Protocol",
+    "email": "tech@wardenprotocol.org"
+  },
+  "homepage": "https://tokens.wardenprotocol.org/mcp",
+  "repository": "https://github.com/warden-protocol/warden-mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "onchain", "trading", "swaps", "tokens", "base", "bnb-chain", "solana", "warden"],
+  "logo": "assets/warden-logo.svg",
+  "mcpServers": "mcp.json"
+}
