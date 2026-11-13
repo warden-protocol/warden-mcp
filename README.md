@@ -251,6 +251,10 @@ If you are an agent reading this:
 - If a tool returns `needs_human` or `session`, hand the prepared trade back to the person. Do not look for another route.
 - Full rules: [SKILL.md](https://tokens.wardenprotocol.org/agents/SKILL.md?utm_source=github&utm_medium=readme&utm_campaign=warden_mcp&utm_content=skill_3)
 
+## AgentReady specs
+
+Specs for server owners in [`agentready/`](agentready/): [output schemas](agentready/output-schemas.json), [error format](agentready/errors.md), [scopes per tool](agentready/scopes.md), [auth.md](agentready/auth.md), [sandbox](agentready/sandbox.md) and a [proposed server card](agentready/server-card.proposed.json). Agents working in this repo: see [AGENTS.md](AGENTS.md).
+
 ## Security
 
 - Sign in with OAuth 2.1 on tokens.wardenprotocol.org, or use an agent key you can revoke. Your wallet's signing key never goes to the AI app.
