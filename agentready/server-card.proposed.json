@@ -1,0 +1,120 @@
+{
+  "name": "org.wardenprotocol/token-terminal",
+  "title": "Warden Token Terminal",
+  "description": "Read the token market, then prepare or execute swaps for a connected wallet.",
+  "version": "1.1.0",
+  "websiteUrl": "https://tokens.wardenprotocol.org",
+  "documentationUrl": "https://tokens.wardenprotocol.org/mcp",
+  "icons": [
+    {
+      "src": "https://tokens.wardenprotocol.org/warden-icon-192.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "192x192"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tokens.wardenprotocol.org/mcp",
+      "name": "Product MCP: market data, quotes, wallet and swaps"
+    }
+  ],
+  "authentication": {
+    "required": false,
+    "note": "Market tools need no credential. Wallet tools need OAuth sign-in or a wk_ key as a bearer token.",
+    "schemes": [
+      "oauth2",
+      "bearer"
+    ],
+    "protectedResourceMetadata": "https://tokens.wardenprotocol.org/.well-known/oauth-protected-resource/mcp",
+    "authDocumentation": "https://tokens.wardenprotocol.org/.well-known/auth.md",
+    "authorizationServer": "https://tokens.wardenprotocol.org",
+    "scopes": [
+      "read",
+      "swap",
+      "trade",
+      "launch"
+    ]
+  },
+  "tools": [
+    {
+      "name": "list_chains",
+      "description": "Chains Warden supports, with each chain’s native coin, dollar stable and gasless support.",
+      "needs": "nothing"
+    },
+    {
+      "name": "price_history",
+      "description": "Candles (open, high, low, close, volume) for a token, and how far it sits from its recent high and low.",
+      "needs": "nothing"
+    },
+    {
+      "name": "search_tokens",
+      "description": "Find tokens by name, ticker or address.",
+      "needs": "nothing"
+    },
+    {
+      "name": "trending_tokens",
+      "description": "Trending, new or top tokens on a chain.",
+      "needs": "nothing"
+    },
+    {
+      "name": "quote_swap",
+      "description": "Price a swap without committing to it.",
+      "needs": "nothing"
+    },
+    {
+      "name": "get_wallet",
+      "description": "The wallet the key belongs to and every token it holds on every chain, with USD values.",
+      "needs": "key"
+    },
+    {
+      "name": "agent_permissions",
+      "description": "What the key may do, whether a session is open, budget left.",
+      "needs": "key"
+    },
+    {
+      "name": "prepare_swap",
+      "description": "Build a swap for the person to sign. Never broadcasts.",
+      "needs": "key + “Prepare swaps”"
+    },
+    {
+      "name": "execute_swap",
+      "description": "Sign and send a swap from the wallet with nobody present. Native coin, gasless and cross-chain included; on Solana, from the agent Solana wallet.",
+      "needs": "key + open session"
+    },
+    {
+      "name": "request_session",
+      "description": "Ask the person to turn on hands-free trading: returns a link they approve with one tap.",
+      "needs": "key"
+    },
+    {
+      "name": "session_request_status",
+      "description": "Whether the person approved a request_session yet.",
+      "needs": "key"
+    },
+    {
+      "name": "swap_status",
+      "description": "Where a gasless (relayed) or cross-chain (bridged) trade stands, or an unconfirmed Solana swap.",
+      "needs": "nothing"
+    }
+  ],
+  "relatedServers": [
+    {
+      "name": "Warden docs MCP",
+      "url": "https://docs.wardenprotocol.org/mcp",
+      "purpose": "Protocol and product documentation",
+      "status": "confirm URL once the docs MCP is live"
+    }
+  ],
+  "sandbox": {
+    "documentation": "https://tokens.wardenprotocol.org/mcp#sandbox",
+    "note": "Market tools need no credential and move no funds."
+  },
+  "errors": {
+    "format": "JSON body {error:{code,message,retryable}}",
+    "documentation": "https://tokens.wardenprotocol.org/mcp#errors"
+  },
+  "agentInstructions": "https://tokens.wardenprotocol.org/agents/SKILL.md"
+}
