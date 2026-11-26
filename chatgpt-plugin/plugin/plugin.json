@@ -1,0 +1,112 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "warden-token-terminal",
+  "version": "1.0.0",
+  "description": "Read-only market data from Warden Token Terminal: token search, trending lists, price history and swap quotes on Base, BNB Chain, Robinhood Chain, Arc and Solana.",
+  "author": {
+    "name": "Warden Protocol",
+    "email": "tech@wardenprotocol.org",
+    "url": "https://wardenprotocol.org"
+  },
+  "homepage": "https://wardenprotocol.org/mcp",
+  "repository": "https://github.com/warden-protocol/warden-mcp",
+  "license": "MIT",
+  "keywords": [
+    "tokens",
+    "crypto",
+    "prices",
+    "market data",
+    "swap quotes",
+    "onchain",
+    "base",
+    "bnb chain",
+    "solana"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Warden Token Terminal",
+        "shortDescription": "Token prices and swap quotes",
+        "longDescription": "Warden Token Terminal brings onchain market data into ChatGPT. Ask about a token and get facts from the chain.\n\nWhat it does:\n- Finds tokens by name, ticker or contract address, and marks tokens Warden has reviewed.\n- Lists trending, new and top tokens on a chain.\n- Shows price history in USD, with the change, high and low over the window.\n- Prices a swap between two tokens, including cross-chain routes, without committing to it.\n- Lists the supported chains: Base, BNB Chain, Robinhood Chain, Arc and Solana.\n- Reports where a relayed or cross-chain swap stands, given its transaction hash.\n\nWho it is for: people who follow onchain tokens and want quick, sourced answers in a chat.\n\nLimits: every tool is read-only. It does not connect a wallet, sign transactions, move funds or place trades. Quotes are estimates at the moment you ask and can change. Nothing here is investment advice. No sign-in is needed.\n\nSupport: tech@wardenprotocol.org",
+        "developerName": "Warden Protocol",
+        "category": "Finance",
+        "capabilities": [
+          "Search tokens",
+          "Trending tokens",
+          "Price history",
+          "Swap quotes",
+          "Supported chains",
+          "Swap status"
+        ],
+        "websiteURL": "https://wardenprotocol.org/mcp",
+        "supportURL": "https://github.com/warden-protocol/warden-mcp/issues",
+        "privacyPolicyURL": "https://wardenprotocol.org/privacy-policy",
+        "termsOfServiceURL": "https://tokens.wardenprotocol.org/terms",
+        "defaultPrompt": [
+          "What tokens are trending on Base right now?",
+          "Show the last 14 days of daily price history for AERO on Base.",
+          "How much USDC would 0.01 ETH get me on Base?"
+        ],
+        "brandColor": "#2C504E",
+        "brandColorDark": "#C7FF8E",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the supported chains",
+              "prompt": "Which chains does Warden Token Terminal support?",
+              "tools_triggered": "list_chains",
+              "expected_behavior": "Lists Base, BNB Chain, Robinhood Chain, Arc and Solana with each chain's native coin and dollar stablecoin."
+            },
+            {
+              "description": "Find a token by name",
+              "prompt": "Find the Aerodrome token on Base and give me its contract address.",
+              "tools_triggered": "search_tokens",
+              "expected_behavior": "Gives AERO on Base at 0x940181a94A35A4569E4529A3CDfB74e38FD98631, marked as an established asset, with its USD price and liquidity."
+            },
+            {
+              "description": "Show trending tokens on a chain",
+              "prompt": "What tokens are trending on Base right now?",
+              "tools_triggered": "trending_tokens",
+              "expected_behavior": "Gives a list of currently trending tokens on Base (chain 8453) with their names, tickers and contract addresses."
+            },
+            {
+              "description": "Show price history for a token",
+              "prompt": "Show the last 14 days of daily price history for AERO on Base.",
+              "tools_triggered": "search_tokens, price_history",
+              "expected_behavior": "Finds AERO on Base and gives 14 daily USD candles with the change, high and low over the window."
+            },
+            {
+              "description": "Price a swap without executing it",
+              "prompt": "How much USDC would 0.01 ETH get me on Base?",
+              "tools_triggered": "list_chains, quote_swap",
+              "expected_behavior": "Gives an estimated USDC amount and approximate USD value for 0.01 ETH (sellAmount 10000000000000000) on Base, and states that it is a quote only and no trade was placed."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Placing a trade is out of scope. The plugin is read-only and should explain that it can only quote the swap.",
+              "prompt": "Buy 50 USDC worth of ETH on Base for me now."
+            },
+            {
+              "description": "Moving funds is out of scope. The plugin has no wallet access and should decline the transfer.",
+              "prompt": "Send 0.1 ETH from my wallet to 0x000000000000000000000000000000000000dEaD."
+            },
+            {
+              "description": "Price predictions are out of scope. The plugin should offer past price data instead of a forecast.",
+              "prompt": "Which token will double in price next week? Tell me what to buy."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "No purchases or payments. The plugin gives read-only market data and swap quotes. It does not execute trades or transfers."
+      },
+      "publication": {
+        "release_notes": "Initial release. Read-only token search, trending lists, price history, swap quotes, swap status and supported chains."
+      }
+    }
+  }
+}
