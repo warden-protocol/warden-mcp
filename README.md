@@ -3,7 +3,7 @@
 [![ToolSDK MCP Registry](https://badges.toolsdk.ai/badge/@toolsdk-remote/warden-mcp)](https://toolsdk-ai.github.io/toolsdk-mcp-registry/#%40toolsdk-remote%2Fwarden-mcp)
 [![warden-protocol/warden-mcp MCP server](https://glama.ai/mcp/servers/warden-protocol/warden-mcp/badges/score.svg)](https://glama.ai/mcp/servers/warden-protocol/warden-mcp)
 
-**Your AI agent, trading onchain.** Warden MCP connects your AI app to Warden Token Terminal: find tokens, price swaps and trade on Base, BNB Chain, Robinhood Chain and Arc, within limits you set.
+**Your AI agent, trading onchain.** Warden MCP connects your AI app to Warden Token Terminal: find tokens, price swaps and trade on Base, BNB Chain, Robinhood Chain, Arc and Solana, within limits you set.
 
 - **Warden embedded wallet (recommended):** sign in with email, Google or X. Lets your agent trade hands-free during sessions you start in Agent access.
 - **Your own wallet:** connect an existing wallet and approve each trade yourself.
@@ -176,6 +176,15 @@ Paste the install message from Quick start. Market tools work as soon as it fini
 
 </details>
 
+### Agent skill
+
+[`skills/warden/SKILL.md`](skills/warden/SKILL.md) is the Warden agent skill (the same file as [tokens.wardenprotocol.org/agents/SKILL.md](https://tokens.wardenprotocol.org/agents/SKILL.md)). It adds Warden MCP in one command and explains every tool. Install it with:
+
+```sh
+hermes skills install warden-protocol/warden-mcp/skills/warden   # Hermes Agent
+npx skills add warden-protocol/warden-mcp                        # Claude Code, Codex, Cursor and others
+```
+
 ## Example prompts
 
 **No sign-in needed**
@@ -227,7 +236,7 @@ To trade, open Warden Token Terminal → Portfolio → Agent access to choose wh
 ## Auth and tools reference
 
 - **Auth:** market tools work without a Warden account. Wallet and trading tools need a free Warden account, then an OAuth sign-in or an agent key (`wk_...`) from Portfolio → Agent access.
-- **Chains:** Base, BNB Chain, Robinhood Chain and Arc
+- **Chains:** Base, BNB Chain, Robinhood Chain, Arc and Solana
 - **Agent skill:** [SKILL.md](https://tokens.wardenprotocol.org/agents/SKILL.md?utm_source=github&utm_medium=readme&utm_campaign=warden_mcp&utm_content=skill_2)
 
 ### What it can do
@@ -267,7 +276,7 @@ If you are an agent reading this:
 Not for market tools: trending tokens, search, chains and swap quotes. Wallet and trading tools need a free Warden account, through OAuth sign-in or an agent key. ChatGPT asks you to sign in while connecting.
 
 **Which chains are supported?**
-Base, BNB Chain, Robinhood Chain and Arc.
+Base, BNB Chain, Robinhood Chain, Arc and Solana.
 
 **Can the agent trade without my approval?**
 Only during a hands-free session you start in Portfolio → Agent access. Otherwise, with the `Prepare swaps` permission, the agent builds the trade and you sign it in Warden.
